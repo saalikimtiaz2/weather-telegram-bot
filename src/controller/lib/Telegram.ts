@@ -32,7 +32,6 @@ function hourlyModal(temp: any) {
         } \n`;
     }
   });
-  // console.log(hourly);
   return hourly;
 }
 
@@ -47,7 +46,6 @@ function dailyModal(temp: any) {
         item.day.condition?.text
       } \n`;
   });
-  console.log(daily);
   return daily;
 }
 
@@ -63,13 +61,12 @@ async function handleMessage(messageObj: typeof TelegramMessage) {
   if (messageText.charAt(0) === "/") {
     const command = messageText.substr(1);
     const temprature = await getWeather();
-    console.log(temprature.forecast.forecastday);
 
     switch (command) {
       case "start":
         return sendMessage(
           messageObj,
-          "Hello! Welcome to Weather Bot. To check Dubai's current temprature use /temp, for hourly use /hourly and for daily use /daily."
+          "Hello! Welcome to Weather Bot. To check Dubai's current temprature use /current, for hourly use /hourly and for daily use /daily."
         );
       case "current":
         return sendMessage(
